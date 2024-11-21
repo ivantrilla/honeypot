@@ -1,0 +1,7 @@
+To do list:
+
+1. Disable anonymous login on FTP server
+
+2. Change password for user admin
+
+3. Watch video at: https://youtu.be/dQw4w9WgXcQ?feature=shared
