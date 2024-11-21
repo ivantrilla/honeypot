@@ -48,8 +48,8 @@ def readlog(file):
     match = re.findall("USER \'\w+\' failed login.", content)
     if match:
         fail_users = grab_user(match, False)
-        print(fail_users)
-
+        Database(fail_users, "fail")
+        
     # detect any attempts of downloading the bait file
     # we don't need to keep track of which user downloads the file since only admin will have enough privileges to do so
     # I just want to detect the amount of times someone downloads it.
