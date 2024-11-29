@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages 
-from .models import User
+from .models import BadActor
 
 def home_view(request):
     return render(request, "website/home.html")
@@ -8,6 +8,7 @@ def home_view(request):
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username") 
+        password = request.POST.get("password")
         ip_address = request.META.get("REMOTE_ADDR")
 
         if username.lower() == "admin" or username.lower() == "anonymous":
@@ -15,7 +16,7 @@ def login_view(request):
         else:
             messages.error(request, "Error: Unauthorized user")
 
-        user = User(username=username, ip_address=ip_address)
+        user = BadActor(username=username, password=password, ip_address=ip_address)
         user.save()
         
     return render(request, "website/login.html")
