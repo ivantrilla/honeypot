@@ -10,7 +10,7 @@ body, html {
     background-color: #cce7ff;
 }
 
-.login-container {
+.login_container {
     width: 350px;
     padding: 40px;
     border-radius: 12px;
@@ -20,18 +20,18 @@ body, html {
     box-shadow: 0 6px 20px #0077b6;
 }
 
-.login-container h2 {
+.login_container h2 {
     margin-bottom: 20px;
     font-size: 30px;
     color: #005f73;
 }
 
-.input-container {
+.input_container {
     margin-bottom: 20px;
     text-align: left;
 }
 
-.input-container label {
+.input_container label {
     display: block;
     font-size: 16px;
     color: #666666;
@@ -39,7 +39,7 @@ body, html {
     font-weight: 500;
 }
 
-.login-container input {
+.login_container input {
     width: 100%;
     padding: 12px;
     font-size: 16px;
@@ -49,17 +49,17 @@ body, html {
     box-sizing: border-box;
 }
 
-.login-container input:focus {
+.login_container input:focus {
     outline: none;
     border-color: #005f73;
     background-color: #ffffff;
 }
 
-.button-container {
+.button_container {
     margin-top: 20px;
 }
 
-.login-container button {
+.login_container button {
     width: 100%;
     padding: 12px;
     font-size: 16px;
@@ -71,17 +71,17 @@ body, html {
     transition: transform 0.3s ease;
 }
 
-.login-container button:hover {
+.login_container button:hover {
     background-color: #005f73;
     transform: translateY(-2px);
 }
 
-.login-container button:active {
+.login_container button:active {
     background-color: #003f57;
     transform: translateY(2px);
 }
 
-.login-container button:focus {
+.login_container button:focus {
     outline: none;
     box-shadow: 0 0 0 3px #005f73;
 }

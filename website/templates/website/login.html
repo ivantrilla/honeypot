@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>LOGIN</title>
     {% load static %}
-	<link rel="stylesheet" href="{%static 'website/login.css' %}">
+	<link rel="stylesheet" href="{% static 'website/login.css' %}">
 </head>
-<body>
 
-    <div class="login-container">
+<body>
+    <div class="login_container">
         <h2>LOGIN</h2>
 
         <form method="POST" action="">
             {% csrf_token %}
-            <div class="input-container">
+            <div class="input_container">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
             </div>
 
-            <div class="input-container">
+            <div class="input_container">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <div class="button-container">
+            <div class="button_container">
                 <button type="submit">LOGIN</button>
             </div>
         </form>

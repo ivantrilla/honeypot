@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
 </head>
+
 <body>
     <header>
         <h1>HONEYPOT</h1>
@@ -33,7 +33,6 @@
                 <div id="chart"></div>
             </div>
 
-
             <div class="small_container">
                 <div class="title_container_small" style="border-left-color: green;">
                     <h1>Most Used Paths</h1>
@@ -50,7 +49,6 @@
                 <div id="chart3"></div>
             </div>
 
-
             <div class="small_container">
                 <div class="title_container_small" style="border-left-color: blue;">
                     <h1>Most Used Passwords</h1>
@@ -63,17 +61,10 @@
 
 
 
-
-
-
-
-
-
 <script>
         var categories = {{ countrynames|safe }};
         var data = {{ countrydata|safe }};
 
-        // Configuración del gráfico
         var options = {
           series: [{
             data: data
@@ -101,11 +92,9 @@
         chart.render();
 
 
-        // Datos dinámicos pasados desde Django
-        var categories = {{ pathnames|safe }}; // Contraseñas como categorías
-        var data = {{ pathdata|safe }}; // Frecuencias
+        var categories = {{ pathnames|safe }};
+        var data = {{ pathdata|safe }};
 
-        // Configuración del gráfico
         var options = {
           series: [{
             data: data
@@ -115,11 +104,10 @@
             type: 'bar',
             events: {
               click: function(chart, w, e) {
-                // console.log(chart, w, e)
               }
             }
           },
-          colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#3F51B5', '#546E7A', '#D4526E'], // Colores para las barras
+          colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#3F51B5', '#546E7A', '#D4526E'],
           plotOptions: {
             bar: {
               columnWidth: '45%',
@@ -133,7 +121,7 @@
             show: false
           },
           xaxis: {
-            categories: categories, // Contraseñas como etiquetas en el eje X
+            categories: categories,
             labels: {
               style: {
                 fontSize: '12px'
@@ -145,10 +133,10 @@
         var chart = new ApexCharts(document.querySelector("#chart2"), options);
         chart.render();
 
-var labels = {{ usernamelabels|safe }}; // Etiquetas
-        var series = {{ usernamedata|safe }}; // Valores
 
-        // Configuración del gráfico
+        var labels = {{ usernamelabels|safe }};
+        var series = {{ usernamedata|safe }}; 
+
         var options = {
           series: series,
           chart: {
@@ -171,13 +159,10 @@ var labels = {{ usernamelabels|safe }}; // Etiquetas
         var chart = new ApexCharts(document.querySelector("#chart3"), options);
         chart.render();
 
-
-
       
-        var labels = {{ passwordnamelabels|safe }}; // Etiquetas
-        var series = {{ passworddata|safe }}; // Valores
+        var labels = {{ passwordnamelabels|safe }};
+        var series = {{ passworddata|safe }};
 
-        // Configuración del gráfico
         var options = {
           series: series,
           chart: {
@@ -201,9 +186,6 @@ var labels = {{ usernamelabels|safe }}; // Etiquetas
         chart.render();  
       
 </script>
-
-
-<h1>{{country_name}}</h1>
 
 </body>
 </html>
