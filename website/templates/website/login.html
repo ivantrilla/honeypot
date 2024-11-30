@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="../../static/webiste/login.css">
+    {% load static %}
+	<link rel="stylesheet" href="{%static 'website/login.css' %}">
 </head>
 <body>
 
     <div class="login-container">
         <h2>LOGIN</h2>
 
-        <form method="POST" action="/admin/">
+        <form method="POST" action="">
             {% csrf_token %}
             <div class="input-container">
                 <label for="username">Username</label>

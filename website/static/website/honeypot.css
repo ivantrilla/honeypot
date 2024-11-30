@@ -1,0 +1,77 @@
+.quantico-regular {
+    font-family: "Quantico", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .quantico-bold {
+    font-family: "Quantico", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .quantico-regular-italic {
+    font-family: "Quantico", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .quantico-bold-italic {
+    font-family: "Quantico", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+body{
+    font-family: "Quantico";
+    width: 80%;
+    left: 20%;
+    position: relative;
+    overflow-x: hidden;
+
+}
+
+header{
+    text-align: center;
+  width: 80%;
+  border: 1px solid black;
+}
+
+section{
+    width: 80%;
+  padding-top: 2vh;
+}
+
+.title_container{
+    border: 1px solid;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: currentcolor;
+  padding: 1em;
+  border-left: 25px solid orange;
+}
+
+.main_container{
+    padding-top: 2vh;
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.small_container{
+    width: 95%;
+}
+
+.title_container_small{
+    border: 1px solid;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: currentcolor;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: currentcolor;
+  padding: 0em;
+    padding-left: 0em;
+  border-left: 25px solid orange;
+  padding-left: 1em;
+}

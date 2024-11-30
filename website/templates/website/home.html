@@ -3,11 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>HONEYPOT PANEL</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'website/honeypot.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <header>
+        <h1>HONEYPOT</h1>
+        <p>THIS SITE DISPLAY THE METRICS OF HONEYPOT</p>
+    </header>
 
-    <h2>HONEYPOT</h2>
-    
+    <section>
+        <div class="title_container">
+            <h1>WEB METRICS</h1>
+            <p>EXPLORE THE LAST DATA</p>
+        </div>
+
+        <div class="main_container">
+            <div class="small_container">
+                <div class="title_container_small" style="border-left-color: purple;">
+                    <h1>Country Stats</h1>
+                </div>
+
+                <div id="chart"></div>
+            </div>
+
+
+            <div class="small_container">
+                <div class="title_container_small" style="border-left-color: green;">
+                    <h1>Most Used Paths</h1>
+                </div>
+
+                <div id="chart2"></div>
+            </div>
+
+            <div class="small_container">
+                <div class="title_container_small" style="border-left-color: red;">
+                    <h1>Most Used Usernames</h1>
+                </div>
+
+                <div id="chart3"></div>
+            </div>
+
+
+            <div class="small_container">
+                <div class="title_container_small" style="border-left-color: blue;">
+                    <h1>Most Used Passwords</h1>
+                </div>
+
+                <div id="chart4"></div>
+            </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+<script>
+        var categories = {{ countrynames|safe }};
+        var data = {{ countrydata|safe }};
+
+        // Configuración del gráfico
+        var options = {
+          series: [{
+            data: data
+          }],
+          chart: {
+            type: 'bar',
+            height: 350
+          },
+          plotOptions: {
+            bar: {
+              borderRadius: 4,
+              borderRadiusApplication: 'end',
+              horizontal: true,
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          xaxis: {
+            categories: categories,
+          }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+        // Datos dinámicos pasados desde Django
+        var categories = {{ pathnames|safe }}; // Contraseñas como categorías
+        var data = {{ pathdata|safe }}; // Frecuencias
+
+        // Configuración del gráfico
+        var options = {
+          series: [{
+            data: data
+          }],
+          chart: {
+            height: 350,
+            type: 'bar',
+            events: {
+              click: function(chart, w, e) {
+                // console.log(chart, w, e)
+              }
+            }
+          },
+          colors: ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0', '#3F51B5', '#546E7A', '#D4526E'], // Colores para las barras
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          legend: {
+            show: false
+          },
+          xaxis: {
+            categories: categories, // Contraseñas como etiquetas en el eje X
+            labels: {
+              style: {
+                fontSize: '12px'
+              }
+            }
+          }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart2"), options);
+        chart.render();
+
+var labels = {{ usernamelabels|safe }}; // Etiquetas
+        var series = {{ usernamedata|safe }}; // Valores
+
+        // Configuración del gráfico
+        var options = {
+          series: series,
+          chart: {
+            type: 'donut',
+          },
+          labels: labels,
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart3"), options);
+        chart.render();
+
+
+
+      
+        var labels = {{ passwordnamelabels|safe }}; // Etiquetas
+        var series = {{ passworddata|safe }}; // Valores
+
+        // Configuración del gráfico
+        var options = {
+          series: series,
+          chart: {
+            type: 'donut',
+          },
+          labels: labels,
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart4"), options);
+        chart.render();  
+      
+</script>
+
+
+<h1>{{country_name}}</h1>
+
 </body>
 </html>
