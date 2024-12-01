@@ -75,3 +75,8 @@ section{
   border-left: 25px solid orange;
   padding-left: 1em;
 }
+/* Media Query para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambia la dirección de los elementos a columna */
+    }
