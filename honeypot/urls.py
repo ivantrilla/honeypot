@@ -22,5 +22,5 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', include('website.urls')),
-    path('admindjango/', admin.site.urls),
+    path('honeypotstats/', admin.site.urls),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
