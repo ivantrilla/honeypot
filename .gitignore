@@ -1,0 +1,6 @@
+postgres-data/
+db.sqlite3
+venv/
+migrations/
+honeypot-static-content/
+secrets/

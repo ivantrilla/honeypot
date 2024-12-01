@@ -39,7 +39,10 @@ def bait_login_view(request):
         post_username = request.POST.get("username") 
         post_password = request.POST.get("password")
         post_ip_address = request.META.get("REMOTE_ADDR")
-        post_ip_address = "0.0.0.0"
+        #post_ip_address = "0.0.0.0"
+        print(post_ip_address)
+        print(len(post_ip_address))
+        print("uwu")
 
         try:
             post_credential = Credential.objects.get(username=post_username,password=post_password)
@@ -60,9 +63,11 @@ def bait_login_view(request):
         post_path.save()
 
 
-        if post_ip_address != "127.0.0.1": post_country = "Spain" 
-        post_country = "EU"
-        
+        if post_ip_address == "127.0.0.1": post_country = "Spain" 
+        else: 
+            r = requests.get(f"http://ip-api.com/json/{post_ip_address}").json()
+            post_country = r['country']
+            print(post_country) 
         
         try: post_country = CountryName.objects.get(name=post_country)
         except: 
