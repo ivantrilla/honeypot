@@ -45,7 +45,7 @@ body {
     }
 }
 
-span {
+.wallpaper span {
     position: relative;
     display: block;
     width: calc(6.25vw - 2px);
@@ -54,7 +54,7 @@ span {
     transition: 1.5s;
 }
 
-span:hover {
+.wallpaper span:hover {
     background-color: #FF0000;
     transition: 0s;
 }
