@@ -1,13 +1,62 @@
-body, html {
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    height: 100%;
+}
+
+body {
+    font-family: "Quantico";
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #cce7ff;
+    background-color: black;
+    position: relative;
+}
+
+.wallpaper {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.wallpaper::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(black, #FF0000, black);
+    animation: Animate 5s linear infinite;
+}
+
+@keyframes Animate {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(100%);
+    }
+}
+
+span {
+    position: relative;
+    display: block;
+    width: calc(6.25vw - 2px);
+    height: calc(6.25vw - 2px);
+    background-color: rgb(18, 18, 18);
+    transition: 1.5s;
+}
+
+span:hover {
+    background-color: #FF0000;
+    transition: 0s;
 }
 
 .login_container {
@@ -16,14 +65,16 @@ body, html {
     border-radius: 12px;
     background-color: #ffffff;
     text-align: center;
-    border: 2px solid #0099cc;
-    box-shadow: 0 6px 20px #0077b6;
+    border: 2px solid #B22222;
+    box-shadow: 0 6px 20px #B22222;
+    z-index: 1;
 }
 
 .login_container h2 {
+    font-family: "Quantico";
     margin-bottom: 20px;
     font-size: 30px;
-    color: #005f73;
+    color: #B22222;
 }
 
 .input_container {
@@ -32,27 +83,29 @@ body, html {
 }
 
 .input_container label {
+    font-family: "Quantico";
     display: block;
-    font-size: 16px;
-    color: #666666;
+    font-size: 18px;
+    color: #B22222;
     margin-bottom: 5px;
     font-weight: 500;
 }
 
 .login_container input {
+    font-family: "Quantico";
     width: 100%;
     padding: 12px;
     font-size: 16px;
     border-radius: 8px;
-    border: 1px solid #0077b6;
+    border: 1px solid #8B0000;
     background-color: #f9f9f9;
     box-sizing: border-box;
 }
 
 .login_container input:focus {
     outline: none;
-    border-color: #005f73;
-    background-color: #ffffff;
+    border-color: #FF6347;
+    background-color: white;
 }
 
 .button_container {
@@ -60,30 +113,31 @@ body, html {
 }
 
 .login_container button {
+    font-family: "Quantico";
     width: 100%;
     padding: 12px;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 8px;
-    color: #ffffff;
-    background-color: #0077b6;
+    color: white;
+    background-color: #FF6347;
     border: none;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 .login_container button:hover {
-    background-color: #005f73;
+    background-color: #B22222;
     transform: translateY(-2px);
 }
 
 .login_container button:active {
-    background-color: #003f57;
+    background-color: #8B0000;
     transform: translateY(2px);
 }
 
 .login_container button:focus {
     outline: none;
-    box-shadow: 0 0 0 3px #005f73;
+    box-shadow: 0 0 0 3px #FF6347;
 }
 
 .messages {
@@ -96,12 +150,13 @@ body, html {
 }
 
 .alert {
-    font-size: 16px;
+    font-family: "Quantico";
+    font-size: 18px;
     padding: 15px;
     margin: 10px 0;
     border-radius: 8px;
-    color: #ffffff;
-    background-color: #e57373;
+    color: white;
+    background-color: #E57373;
     text-align: center;
 }
 
