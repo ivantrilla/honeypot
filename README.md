@@ -7,61 +7,55 @@ El **Honeypot Project** es una herramienta de seguridad diseñada para simular u
 
 ---
 
-### :construction: Estado del proyecto :construction:
+### Estado del proyecto :construction:
 
-El proyecto se encuentra en su versión inicial, con un enfoque en la detección de accesos no autorizados y la recopilación de información sobre los atacantes. Se seguirán implementando nuevas funcionalidades y mejoras.
-
----
-
-### Características de la aplicación y demostración
-
-- **Simulación de vulnerabilidades**: El honeypot simula diversas vulnerabilidades de red para atraer posibles atacantes.
-- **Registros de actividad**: Los intentos de ataque son registrados en tiempo real y almacenados en archivos de log.
-- **Configuración personalizable**: Puedes cambiar puertos y otras configuraciones a través del archivo `config.py`.
-  
-Para ver cómo funciona, puedes ejecutar el proyecto localmente, accediendo a la aplicación en `http://localhost:8080` por defecto.
+El proyecto simula un servicio FTP y un sistema de login que recopilan datos de intentos de acceso no autorizados. La información obtenida se procesa y se visualiza en gráficos para facilitar su análisis y comprensión.
 
 ---
 
-### Acceso al proyecto
+## Instalación 🔧
 
 1. Clona el repositorio:
 
-   ```bash
-   cd honeypot
+   ```sh
+   git clone https://github.com/ivantrilla/honeypot.git
+    ```
+2. Navega hasta el directorio del proyecto:
 
-2. Instala las dependencias necesarias:
+    ```sh
+    cd honeypot
+    ```   
+    
+3. Instala los paquetes requeridos:
 
-    ```bash
-
+    ```sh
     pip3 install -r requirements.txt
-3. Inicia el honeypot:
+    ```
 
-    ```bash
+## Despliegue 📦
 
-    python honeypot.py git clone https://github.com/tuusuario/honeypot.git
+1. Utilice el siguiente comando:
+   
+     ```sh
+     python manage.py runserver
+     ```
 
-## 🛠️ Tecnologías utilizadas 🛠️
+## Tecnologías utilizadas 🛠️
 
 -  **Python**: Lenguaje principal de desarrollo.
 - **Django**: Framework utilizado para la gestión de la aplicación y la interacción con la base de datos.
 - **PostgreSQL/SQLite**: Bases de datos compatibles.
 
-## Personas Desarrolladoras del Proyecto
+##  Autores del Proyecto ✒️
 
-- Albert Alegre
-- Ivan Trilla
-- Unai Anfruns
-- Hector Sarrion
+- [Albert Alegre](https://github.com/acheberto)
+- [Ivan Trilla](https://github.com/ivantrilla)
+- [Unai Anfruns](https://github.com/ainssssss)
+- [Hector Sarrion](https://github.com/antthegreekgod)
 
-## Licencia
+## Licencia 📄
 
-Este proyecto está bajo la **Licencia MIT**. Consulta el archivo `LICENSE` para más detalles.
-
-## Conclusión
-
-Este proyecto tiene como objetivo proporcionar una herramienta educativa y de análisis para aquellos interesados en aprender sobre la seguridad informática y las técnicas utilizadas por los atacantes. Se invita a los usuarios a colaborar, mejorar el proyecto y aplicarlo para mejorar la seguridad en sus propios entornos.
-
+Este proyecto está bajo la **Licencia MIT**. Consulta el archivo [MIT LICENSE](https://github.com/ivantrilla/honeypot?tab=MIT-1-ov-file) para más detalles.
 
 
 
