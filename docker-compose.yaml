@@ -22,6 +22,7 @@ services:
       - ENV_DATABASE
       - ENV_USER
       - ENV_PASSWORD
+      - ENV_DJANGO_PASSWORD
     ports:
       - "8000:8000"
     networks:
