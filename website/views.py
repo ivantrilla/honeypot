@@ -8,7 +8,7 @@ from django.db.models import Count
 def home_view(request):
     countrynames = [f"{country.name}" for country in CountryName.objects.all()]
     countrydata = [country.times_used for country in CountryName.objects.all()] 
-   
+
     pathnames = [f"{path.name}" for path in UrlPath.objects.all()]
     pathdata = [path.times_used for path in UrlPath.objects.all()]
 
@@ -16,11 +16,13 @@ def home_view(request):
     username = [f"Username: {item['username']}" for item in queryset]
     usernamedata = [item['count'] for item in queryset]  
 
-
     queryset = Credential.objects.values('password').annotate(count=Count('password'))
     passwordnamelabels = [f"Password: {item['password']}" for item in queryset]  
     passworddata = [item['count'] for item in queryset] 
 
+    queryset = BadActor.objects.values('ip_address').annotate(count=Count('ip_address'))
+    iplabels = [f"IP Address: {item['ip_address']}" for item in queryset]
+    ipdata = [item['count'] for item in queryset]  
 
     context = {
         'countrynames': countrynames,
@@ -30,8 +32,11 @@ def home_view(request):
         'usernamelabels': username,
         'usernamedata': usernamedata,
         'passwordnamelabels' : passwordnamelabels,
-        'passworddata' : passworddata
+        'passworddata' : passworddata,
+        'iplabels' : iplabels,
+        'ipdata' : ipdata
     }
+    
     return render(request, "website/home.html",context=context)
 
 def bait_login_view(request):
@@ -39,10 +44,6 @@ def bait_login_view(request):
         post_username = request.POST.get("username") 
         post_password = request.POST.get("password")
         post_ip_address = request.META.get("REMOTE_ADDR")
-        #post_ip_address = "0.0.0.0"
-        print(post_ip_address)
-        print(len(post_ip_address))
-        print("uwu")
 
         try:
             post_credential = Credential.objects.get(username=post_username,password=post_password)
@@ -53,8 +54,8 @@ def bait_login_view(request):
         post_credential.times_used = int(post_credential.times_used) +1
         post_credential.save()
 
-
-        try: post_path = UrlPath.objects.get(name=request.path)
+        try: 
+            post_path = UrlPath.objects.get(name=request.path)
         except: 
             post_path = UrlPath(name=request.path)
             post_path.save()
@@ -62,21 +63,21 @@ def bait_login_view(request):
         post_path.times_used = int(post_path.times_used) + 1
         post_path.save()
 
-
-        if post_ip_address == "127.0.0.1": post_country = "Spain" 
+        if post_ip_address == "127.0.0.1": 
+            post_country = "Spain" 
         else: 
             r = requests.get(f"http://ip-api.com/json/{post_ip_address}").json()
             post_country = r['country']
             print(post_country) 
         
-        try: post_country = CountryName.objects.get(name=post_country)
+        try: 
+            post_country = CountryName.objects.get(name=post_country)
         except: 
             post_country = CountryName(name=post_country)
             post_country.save()
 
         post_country.times_used = int(post_country.times_used) +1
         post_country.save()
-
         
         try: 
             BadActorObject = BadActor.objects.get(ip_address=post_ip_address)
@@ -88,7 +89,6 @@ def bait_login_view(request):
         BadActorObject.credenial.add(post_credential)
         BadActorObject.url_path.add(post_path)
     
-
         messages.error(request, "Error: Unauthorized user")
     
     return render(request, "website/login.html")
