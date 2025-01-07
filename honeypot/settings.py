@@ -67,9 +67,9 @@ WSGI_APPLICATION = 'honeypot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'website',
-        'USER': 'ains',
-        'PASSWORD': '31_asAsadae2131co',
+        'NAME': os.environ['ENV_DATABASE'].strip('"'),
+        'USER': os.environ['ENV_USER'].strip('"'),
+        'PASSWORD': os.environ['ENV_PASSWORD'].strip('"'),
         'HOST': 'postgres',
         'PORT': '5432',
     }

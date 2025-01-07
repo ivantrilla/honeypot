@@ -1,5 +1,6 @@
 version : '3'
 services:
+  
   nginx:
     image: nginx:1-alpine
     restart: always
@@ -8,41 +9,40 @@ services:
       - ./honeypot-static-content:/var/www/static
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    network_mode: "host"
+    networks:
+      - app-network
+    ports:
+      - "80:80"
+      - "443:443"
 
   honeypot:
     image: honeypot:1.0
     restart: always
     environment:
-      - SECRET_KEY="PUTA"
+      - ENV_DATABASE
+      - ENV_USER
+      - ENV_PASSWORD
+      - ENV_DJANGO_PASSWORD
     ports:
-      - 8000:8000
-    volumes:
-      - ./honeypot-static-content:/app/static-web
+      - "8000:8000"
     networks:
       - app-network
 
   postgres:
     image: postgres:14-alpine
+    restart: always
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+    - ./postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=/run/secrets/db_password
-      - POSTGRES_USER=/run/secrets/db_user
-      - POSTGRES_DB=/run/secrets/db_database
+      POSTGRES_DB: ${ENV_DATABASE}
+      POSTGRES_USER: ${ENV_USER}
+      POSTGRES_PASSWORD: ${ENV_PASSWORD}
     ports:
       - "5432:5432"
     networks:
       - app-network
 
 
-secrets:
-  db_user:
-    file: ./secrets/db_user.txt
-  db_password:
-    file: ./secrets/db_password.txt
-  db_database:
-    file: ./secrets/db_database.txt
 networks:
   app-network:
     driver: bridge
