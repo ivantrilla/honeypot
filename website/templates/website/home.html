@@ -57,8 +57,15 @@
                 <div id="chart4"></div>
             </div>
 
-    </section>
+            <div class="small_container">
+              <div class="title_container_small" style="border-left-color: orange;">
+                  <h1>Most Used IPs</h1>
+              </div>
 
+              <div id="chart5"></div>
+            </div>
+        </div>
+    </section>
 
 
 <script>
@@ -183,8 +190,33 @@
         };
 
         var chart = new ApexCharts(document.querySelector("#chart4"), options);
+        chart.render();
+        
+
+        var labels = {{ iplabels|safe }};
+        var series = {{ ipdata|safe }};
+
+        var options = {
+          series: series,
+          chart: {
+            type: 'donut',
+          },
+          labels: labels,
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart5"), options);
         chart.render();  
-      
 </script>
 
 </body>
